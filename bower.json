@@ -1,0 +1,18 @@
+{
+	"name": "device-orientation",
+	"authors": [
+		"Guilherme Farias"
+	],
+	"license": "MIT",
+	"keywords": [
+		"web-component",
+		"web-components",
+		"polymer",
+		"orientation",
+		"device orientation"
+	],
+	"main": "device-orientation.html",
+	"dependencies": {
+		"polymer": "Polymer/polymer#0.2.3"
+	}
+}
