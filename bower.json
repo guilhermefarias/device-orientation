@@ -11,7 +11,7 @@
 		"orientation",
 		"device orientation"
 	],
-	"main": "device-orientation.html",
+	"main": "src/device-orientation.html",
 	"dependencies": {
 		"polymer": "Polymer/polymer#0.2.3"
 	}
