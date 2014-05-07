@@ -7,7 +7,14 @@
 	<script>
 		Polymer('device-orientation', {
 			// Fires when the "<device-orientation>" has been fully prepared
-			ready: function() {},
+			ready: function() {
+				if (!window.DeviceOrientationEvent) {
+					return false;
+				}
+
+				// Listen for the event and handle DeviceOrientationEvent object
+				window.addEventListener('deviceorientation', this.orientationHandler, false)
+			},
 
 			// Fires when the element was inserted into the document
 			attached: function() {},
@@ -16,7 +23,13 @@
 			detached: function() {},
 
 			// Fires when an attribute was added, removed, or updated
-			attributeChanged: function(attr, oldVal, newVal) {}
+			attributeChanged: function(attr, oldVal, newVal) {},
+
+			orientationHandler: function(orientation) {
+				document.getElementById('gamma').textContent = orientation.gamma.toFixed(2);
+				document.getElementById('beta').textContent = orientation.beta.toFixed(2);
+				document.getElementById('alpha').textContent = orientation.alpha.toFixed(2);
+			}
 		});
 	</script>
 
