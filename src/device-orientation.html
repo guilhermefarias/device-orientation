@@ -6,6 +6,12 @@
 
 	<script>
 		Polymer('device-orientation', {
+			publish: {
+				gamma: {value: null, reflect: true},
+				beta: {value: null, reflect: true},
+				alpha: {value: null, reflect: true}
+			},
+
 			// Fires when the "<device-orientation>" has been fully prepared
 			ready: function() {
 				if (!window.DeviceOrientationEvent) {
@@ -13,7 +19,7 @@
 				}
 
 				// Listen for the event and handle DeviceOrientationEvent object
-				window.addEventListener('deviceorientation', this.orientationHandler, false)
+				window.addEventListener('deviceorientation', this.orientationHandler.bind(this), false)
 			},
 
 			// Fires when the element was inserted into the document
@@ -26,9 +32,15 @@
 			attributeChanged: function(attr, oldVal, newVal) {},
 
 			orientationHandler: function(orientation) {
-				document.getElementById('gamma').textContent = orientation.gamma.toFixed(2);
-				document.getElementById('beta').textContent = orientation.beta.toFixed(2);
-				document.getElementById('alpha').textContent = orientation.alpha.toFixed(2);
+				this.gamma = orientation.gamma;
+				this.beta = orientation.beta;
+				this.alpha = orientation.alpha;
+
+				this.fire('motion', {
+					gamma: this.gamma,
+					beta: this.beta,
+					alpha: this.alpha
+				});
 			}
 		});
 	</script>

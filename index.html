@@ -18,5 +18,16 @@
 	<!-- Using Custom Elements -->
 	<device-orientation></device-orientation>
 
+
+<script>
+// Example of use
+var orientation = document.querySelector('device-orientation');
+orientation.addEventListener('motion', function(e) {
+	document.getElementById('gamma').textContent = this.gamma;
+	document.getElementById('beta').textContent = this.beta;
+	document.getElementById('alpha').textContent = this.alpha;
+});
+</script>
+	
 </body>
 </html>
