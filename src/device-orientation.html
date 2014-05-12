@@ -2,7 +2,7 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 
 <!-- Define your custom element -->
-<polymer-element name="device-orientation" attributes="interval">
+<polymer-element name="device-orientation" attributes="interval digit">
 
 	<script>
 	(function() {
@@ -21,6 +21,13 @@
 			* @default 0
 			*/
 			interval: 0,
+
+			/**
+			* @attribute digit
+			* @type Number
+			* @default 0
+			*/
+			digit: 0,
 
 			// Fires when the "<device-orientation>" has been fully prepared
 			ready: function() {
@@ -50,9 +57,15 @@
 					}
 				}
 
-				this.gamma = orientation.gamma;
-				this.beta = orientation.beta;
-				this.alpha = orientation.alpha;
+				if(this.digit == 0){
+					this.gamma = ~~orientation.gamma;
+					this.beta = ~~orientation.beta;
+					this.alpha = ~~orientation.alpha;
+				} else {
+					this.gamma = orientation.gamma.toFixed(this.digit);
+					this.beta = orientation.beta.toFixed(this.digit);
+					this.alpha = orientation.alpha.toFixed(this.digit);
+				}
 
 				this.fire('motion', {
 					gamma: this.gamma,
