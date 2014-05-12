@@ -7,26 +7,40 @@ The accuracy can also be set using the <code>digit</code> attribute.
 By default, the element will fire the motion event at any time, and motion information will come without decimal digits.
 In the examples below shows how it is possible set attributes to customize the data.
 
-## Getting Started
+## Install
 
-Import the source
+Install the component using [Bower](http://bower.io/):
 
-```html
-<link rel="import" href="src/device-orientation.html">
+```sh
+$ bower install device-orientation --save
 ```
 
-Add a tag in your HTML page
+Or [download as ZIP](https://github.com/guilhermefarias/device-orientation/archive/v1.0.0.zip).
+
+## Usage
+
+Import Web Components' polyfill:
+```html
+<script src="//cdnjs.cloudflare.com/ajax/libs/polymer/0.2.3/platform.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/polymer/0.2.3/polymer.js"></script>
+```
+
+Import Custom Element:
+```html
+<link rel="import" href="bower_components/device-orientation/src/device-orientation.html">
+```
+
+Start using it!
 ```html
 <device-orientation></device-orientation>
 ```
-And listen the motion
 
 ```javascript
 var orientation = document.querySelector('device-orientation');
 orientation.addEventListener('motion', function() {
-  console.log(this.gamma);
-  console.log(this.beta);
-  console.log(this.alpha);
+	console.log(this.gamma);
+	console.log(this.beta);
+	console.log(this.alpha);
 });
 ```
 
