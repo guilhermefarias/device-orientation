@@ -2,15 +2,25 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 
 <!-- Define your custom element -->
-<polymer-element name="device-orientation">
+<polymer-element name="device-orientation" attributes="interval">
 
 	<script>
+	(function() {
+		var time_ = null;
+
 		Polymer('device-orientation', {
 			publish: {
 				gamma: {value: null, reflect: true},
 				beta: {value: null, reflect: true},
 				alpha: {value: null, reflect: true}
 			},
+
+			/**
+			* @attribute interval
+			* @type Number
+			* @default 0
+			*/
+			interval: 0,
 
 			// Fires when the "<device-orientation>" has been fully prepared
 			ready: function() {
@@ -32,6 +42,14 @@
 			attributeChanged: function(attr, oldVal, newVal) {},
 
 			orientationHandler: function(orientation) {
+				if(this.interval != 0){
+					if(time_ + this.interval > Date.now() ){
+						return;
+					} else {
+						time_ = Date.now()
+					}
+				}
+
 				this.gamma = orientation.gamma;
 				this.beta = orientation.beta;
 				this.alpha = orientation.alpha;
@@ -43,6 +61,7 @@
 				});
 			}
 		});
+	})();
 	</script>
 
 </polymer-element>
