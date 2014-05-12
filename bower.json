@@ -1,8 +1,10 @@
 {
 	"name": "device-orientation",
 	"authors": [
-		"Guilherme Farias"
+		"Guilherme Farias <guilherme@guiky.com.br>"
 	],
+	"version": "1.0.0",
+	"description": "A simple Polymer element that provides the current device orientation using the Device Orientation API.",
 	"license": "MIT",
 	"keywords": [
 		"web-component",
