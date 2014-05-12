@@ -5,7 +5,8 @@
 	<title>&lt;device-orientation&gt;</title>
 
 	<!-- Importing Web Component's Polyfill -->
-	<script src="bower_components/platform/platform.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/polymer/0.2.3/platform.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/polymer/0.2.3/polymer.js"></script>
 
 	<!-- Importing Custom Elements -->
 	<link rel="import" href="src/device-orientation.html">
@@ -21,11 +22,15 @@
 
 <script>
 // Example of use
-var orientation = document.querySelector('device-orientation');
-orientation.addEventListener('motion', function(e) {
-	document.getElementById('gamma').textContent = this.gamma;
-	document.getElementById('beta').textContent = this.beta;
-	document.getElementById('alpha').textContent = this.alpha;
+document.addEventListener('DOMContentLoaded', function(){
+
+	var orientation = document.querySelector('device-orientation');
+	orientation.addEventListener('motion', function(e) {
+		document.getElementById('gamma').textContent = this.gamma;
+		document.getElementById('beta').textContent = this.beta;
+		document.getElementById('alpha').textContent = this.alpha;
+	});
+
 });
 </script>
 	
