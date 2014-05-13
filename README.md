@@ -21,12 +21,12 @@ Or [download as ZIP](https://github.com/guilhermefarias/device-orientation/archi
 
 Import Web Components' polyfill:
 ```html
-<script src="//cdnjs.cloudflare.com/ajax/libs/polymer/0.2.3/platform.js"></script>
+<script src="bower_components/platform/platform.js"></script>
 ```
 
 Import Custom Element:
 ```html
-<link rel="import" href="bower_components/device-orientation/src/device-orientation.html">
+<link rel="import" href="bower_components/device-orientation/device-orientation.html">
 ```
 
 Start using it!

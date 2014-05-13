@@ -1,0 +1,78 @@
+<link rel="import" href="../polymer/polymer.html">
+
+<polymer-element name="device-orientation" attributes="interval digit">
+
+	<script>
+	(function() {
+		var time_ = null;
+
+		Polymer('device-orientation', {
+			publish: {
+				gamma: {value: null, reflect: true},
+				beta: {value: null, reflect: true},
+				alpha: {value: null, reflect: true}
+			},
+
+			/**
+			* @attribute interval
+			* @type Number
+			* @default 0
+			*/
+			interval: 0,
+
+			/**
+			* @attribute digit
+			* @type Number
+			* @default 0
+			*/
+			digit: 0,
+
+			// Fires when the "<device-orientation>" has been fully prepared
+			ready: function() {
+				if (!window.DeviceOrientationEvent) {
+					return false;
+				}
+
+				// Listen for the event and handle DeviceOrientationEvent object
+				window.addEventListener('deviceorientation', this.orientationHandler.bind(this), false)
+			},
+
+			// Fires when the element was inserted into the document
+			attached: function() {},
+
+			// Fires when the element was removed from the document
+			detached: function() {},
+
+			// Fires when an attribute was added, removed, or updated
+			attributeChanged: function(attr, oldVal, newVal) {},
+
+			orientationHandler: function(orientation) {
+				if(this.interval != 0){
+					if(time_ + this.interval > Date.now() ){
+						return;
+					} else {
+						time_ = Date.now()
+					}
+				}
+
+				if(this.digit == 0){
+					this.gamma = ~~orientation.gamma;
+					this.beta = ~~orientation.beta;
+					this.alpha = ~~orientation.alpha;
+				} else {
+					this.gamma = orientation.gamma.toFixed(this.digit);
+					this.beta = orientation.beta.toFixed(this.digit);
+					this.alpha = orientation.alpha.toFixed(this.digit);
+				}
+
+				this.fire('motion', {
+					gamma: this.gamma,
+					beta: this.beta,
+					alpha: this.alpha
+				});
+			}
+		});
+	})();
+	</script>
+
+</polymer-element>
