@@ -59,6 +59,14 @@ The gamma angle is 0° when the device's left and right sides are the same dista
 ![Orientation Axis](http://i58.tinypic.com/ampljd.png)
 
 
+## Options
+
+Attribute  | Options                              | Default             | Description
+---        | ---                                  | ---                 | ---
+`interval` | *int*                                | ``                  | Interval in milliseconds between motions events. By default motion event may update anytime.
+`digit`    | *int*                                | 0                   | Decimal digits accuracy at result, by default only integer number come from this element.
+
+
 ## Examples
 ### Example of motion fired every 1 second
 ```html
